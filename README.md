@@ -4,13 +4,12 @@ Sometimes we want to teach a work buddy to leave their computer locked, we have 
 
 To run the script 
 ```sh
-curl -O - https://raw.githubusercontent.com/PootisPenserHere/prankScripts/master/multiPlatform/default.sh | bash
+curl https://raw.githubusercontent.com/PootisPenserHere/prankScripts/master/multiPlatform/default.sh | bash
 ```
 Shortened url 
 ```sh
-curl -O - https://goo.gl/zMNr8N | bash
+curl https://goo.gl/zMNr8N | bash
 ```
-
 
 ### Todos
 
