@@ -29,6 +29,7 @@ esac
     # To set the background an absolute route to the file must be provided
     # this is achieved by concatenating dynamic path as long as this is
     # run from $HOME
+    gsettings set org.gnome.desktop.background picture-options "scaled"
     first="gsettings set org.gnome.desktop.background picture-uri file://"
     second=$(pwd)
     third="/$fileName"
