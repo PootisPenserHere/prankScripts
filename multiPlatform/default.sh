@@ -7,18 +7,18 @@ case $OSTYPE in
 
     case $randomNumber in
     1)
-      imageLink='https://i.imgur.com/aIv1C8F.jpg'
+      imageLink='https://i.ytimg.com/vi/hnQjRvvEnTM/hqdefault.jpg'
       ;;
     2)
-      imageLink='https://i.imgur.com/aIv1C8F.jpg'
+      imageLink='https://st2.depositphotos.com/7177640/12447/v/450/depositphotos_124470322-stock-illustration-silhouette-of-the-dog-goes.jpg'
       ;;
     3)
-      imageLink='https://i.imgur.com/aIv1C8F.jpg'
+      imageLink='https://wallpaper.wiki/wp-content/uploads/2017/05/Sloth-Image.jpg'
       ;;
     4)
-      imageLink='https://i.imgur.com/aIv1C8F.jpg'
+      imageLink='https://i.imgur.com/g7bkC1l.jpg'
       ;;
-esac
+    esac
 
     # Download the image
     curl $imageLink > $fileName
