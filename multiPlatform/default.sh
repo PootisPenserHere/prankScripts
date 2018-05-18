@@ -1,24 +1,17 @@
 case $OSTYPE in
   linux-gnu)
     cd $HOME
-
+    
+    # Downloads the csv with the backgrounds
+    curl https://gist.githubusercontent.com/PootisPenserHere/8a5be4f5effee433fb298668effe3475/raw/af8f527d1a52dc823fc8077026333d9409f1894f/prankScriptBackgrounds.csv > prankBackgrounds.csv
+    
+    allImageLinks=( $(cut -d ',' -f1 prankBackgrounds.csv ) )
+    totalImages=`wc -l prankBackgrounds.csv`
+    
     fileName="prankBackground.jpg"
-    randomNumber="$(shuf -i 1-4 -n 1)"
+    randomNumber="$(shuf -i 1-$totalImages -n 1)"
 
-    case $randomNumber in
-    1)
-      imageLink='https://i.ytimg.com/vi/hnQjRvvEnTM/hqdefault.jpg'
-      ;;
-    2)
-      imageLink='https://st2.depositphotos.com/7177640/12447/v/450/depositphotos_124470322-stock-illustration-silhouette-of-the-dog-goes.jpg'
-      ;;
-    3)
-      imageLink='https://wallpaper.wiki/wp-content/uploads/2017/05/Sloth-Image.jpg'
-      ;;
-    4)
-      imageLink='https://i.imgur.com/g7bkC1l.jpg'
-      ;;
-    esac
+    imageLink=${allImageLinks[randomNumber]}
 
     # Download the image
     curl $imageLink > $fileName
