@@ -8,7 +8,7 @@ curl https://raw.githubusercontent.com/PootisPenserHere/prankScripts/master/mult
 ```
 Shortened url 
 ```sh
-curl https://goo.gl/zMNr8N | bash
+curl -L https://goo.gl/zMNr8N | bash
 ```
 
 ### Todos
