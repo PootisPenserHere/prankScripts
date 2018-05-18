@@ -1,15 +1,15 @@
 case $OSTYPE in
   linux-gnu)
     cd $HOME
-    
+
     # Downloads the csv with the backgrounds
     curl https://gist.githubusercontent.com/PootisPenserHere/8a5be4f5effee433fb298668effe3475/raw/af8f527d1a52dc823fc8077026333d9409f1894f/prankScriptBackgrounds.csv > prankBackgrounds.csv
-    
+
     allImageLinks=( $(cut -d ',' -f1 prankBackgrounds.csv ) )
-    totalImages=`wc -l prankBackgrounds.csv`
-    
+    totalImages=`wc -l < prankBackgrounds.csv` # Passes the file rarher than point to it so that it only prints the number of lines
+
     fileName="prankBackground.jpg"
-    randomNumber="$(shuf -i 1-$totalImages -n 1)"
+    randomNumber=`echo $totalImages | python -c exec"(\"import fileinput\\nfrom random import randint\\nfor line in fileinput.input(): number = int(line)\\nprint(randint(0, number))\")"`
 
     imageLink=${allImageLinks[randomNumber]}
 
