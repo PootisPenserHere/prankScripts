@@ -2,23 +2,16 @@ case $OSTYPE in
   linux-gnu)
     cd $HOME
 
-    fileName="prankBackground.jpg"
-    randomNumber="$(shuf -i 1-4 -n 1)"
+    # Downloads the csv with the backgrounds
+    curl https://gist.githubusercontent.com/PootisPenserHere/8a5be4f5effee433fb298668effe3475/raw/af8f527d1a52dc823fc8077026333d9409f1894f/prankScriptBackgrounds.csv > prankBackgrounds.csv
 
-    case $randomNumber in
-    1)
-      imageLink='https://i.ytimg.com/vi/hnQjRvvEnTM/hqdefault.jpg'
-      ;;
-    2)
-      imageLink='https://st2.depositphotos.com/7177640/12447/v/450/depositphotos_124470322-stock-illustration-silhouette-of-the-dog-goes.jpg'
-      ;;
-    3)
-      imageLink='https://wallpaper.wiki/wp-content/uploads/2017/05/Sloth-Image.jpg'
-      ;;
-    4)
-      imageLink='https://i.imgur.com/g7bkC1l.jpg'
-      ;;
-    esac
+    allImageLinks=( $(cut -d ',' -f1 prankBackgrounds.csv ) )
+    totalImages=`wc -l < prankBackgrounds.csv` # Passes the file rarher than point to it so that it only prints the number of lines
+
+    fileName="prankBackground.jpg"
+    randomNumber=`echo $totalImages | python -c exec"(\"import fileinput\\nfrom random import randint\\nfor line in fileinput.input(): number = int(line)\\nprint(randint(0, number))\")"`
+
+    imageLink=${allImageLinks[randomNumber]}
 
     # Download the image
     curl $imageLink > $fileName
@@ -29,7 +22,7 @@ case $OSTYPE in
     # To set the background an absolute route to the file must be provided
     # this is achieved by concatenating dynamic path as long as this is
     # run from $HOME
-    gsettings set org.gnome.desktop.background picture-options "wallpaper"
+    #gsettings set org.gnome.desktop.background picture-options "wallpaper"
     first="gsettings set org.gnome.desktop.background picture-uri file://"
     second=$(pwd)
     third="/$fileName"
