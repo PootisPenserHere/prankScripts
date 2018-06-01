@@ -3,7 +3,7 @@ case $OSTYPE in
     cd $HOME
 
     # Downloads the csv with the backgrounds
-    curl https://gist.githubusercontent.com/PootisPenserHere/8a5be4f5effee433fb298668effe3475/raw/af8f527d1a52dc823fc8077026333d9409f1894f/prankScriptBackgrounds.csv > prankBackgrounds.csv
+    curl https://raw.githubusercontent.com/PootisPenserHere/prankScripts/master/multiPlatform/backgrounds.csv > prankBackgrounds.csv
 
     allImageLinks=( $(cut -d ',' -f1 prankBackgrounds.csv ) )
     totalImages=`wc -l < prankBackgrounds.csv` # Passes the file rarher than point to it so that it only prints the number of lines
